@@ -13,9 +13,14 @@ Ce projet permet de justifier des textes envoyés à travers un API endpoint
   
 ## Endpoints
 
+- `POST /api/token`: Retourne un token si l'email est autorisé
+  - **Request Body (Content-Type: application/json)**: `{"email": "EMAIL"}`
+  - **Response (Content-Type: application/json)**: `{"token": "<jwt_token>"}`
+
 - `POST /api/justify`: Justifie un texte à 80 caractères par ligne
-  - **Request Body (Content-Type: application/json)**: `<texte>`
-  - **Response**: Texte justifié
+  - **Headers (Authorization)**: `Bearer <jwt_token>`
+  - **Request Body (Content-Type: application/json)**: `{"text": "CONTENU_DU_TEXTE"}`
+  - **Response (Content-Type: text/plain)**: Texte justifié
 
 ## Installation
 
