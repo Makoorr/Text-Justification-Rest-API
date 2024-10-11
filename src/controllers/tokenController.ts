@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
-// const uuid = require('uuid');
+const uuid = require('uuid');
 
 export const auth = (req: Request, res: Response) => {
     const email: string = req.body.email;
@@ -10,7 +10,7 @@ export const auth = (req: Request, res: Response) => {
         if (mockDatabase.includes(email)) {
             // 1. Generation du payload pour le token
             const payload = {
-                // id: uuid.v4(),
+                id: uuid.v4(),
                 login: email,
             };
             const secret = process.env.JWT_SECRET || 'secret'
