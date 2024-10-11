@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
+import { mockDatabase } from '../database/users';
 const uuid = require('uuid');
 
 export const auth = (req: Request, res: Response) => {
     const email: string = req.body.email;
-    const mockDatabase: string[] = ["user1@mail.com", "user2@mail.com", "user3@mail.com",];
     
     try {
         if (mockDatabase.includes(email)) {

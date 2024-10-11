@@ -1,8 +1,8 @@
 import { NextFunction, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
-import { RequestWithEmail } from '../interfaces/auth';
+import { RequestWithUser } from '../interfaces/auth';
 
-export const isAuth = (req: RequestWithEmail, res: Response, next: NextFunction) => {
+export const isAuth = (req: RequestWithUser, res: Response, next: NextFunction) => {
     // 1. get token from headers
     // token format: "Bearer <token>"
     const authorization = req.headers['authorization'];

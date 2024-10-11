@@ -1,6 +1,6 @@
 import { Request } from "express";
 import { JwtPayload } from "jsonwebtoken";
 
-export interface RequestWithEmail extends Request {
+export interface RequestWithUser extends Request {
     user: string | JwtPayload
 }
