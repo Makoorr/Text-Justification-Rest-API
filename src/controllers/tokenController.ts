@@ -22,9 +22,9 @@ export const auth = (req: Request, res: Response) => {
             })  
 
             // 3. send token
-            return res.send({ token })
+            res.send({ token })
         } else {
-            return res.status(401).send('Unauthorized');
+            res.status(401).send('Unauthorized');
         }
     } catch (error) {
         res.status(400).send("Bad request.");
