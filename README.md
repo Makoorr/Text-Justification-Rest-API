@@ -56,3 +56,6 @@ Executer la commande suivante:
 ```
 npm start
 ```
+
+## Preview of tests
+![image](https://github.com/user-attachments/assets/778e26ce-51f6-4de4-bd4c-62b70c33e586)
