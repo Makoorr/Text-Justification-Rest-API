@@ -37,6 +37,6 @@ export const justifyText = (req: Request, res: Response) => {
         res.set('Content-Type', 'text/plain');
         res.send(justifiedText);
     } catch (error) {
-        res.status(400).send("Bad text content.");
+        res.status(400).send("Bad text content");
     }
 };

@@ -18,7 +18,7 @@ export const isAuth = (req: RequestWithUser, res: Response, next: NextFunction) 
         return res.status(401).send('Unauthorized');
     }
 
-    const token = authorization ? authorization.split(' ')[1] : '';
+    const token = authorization.split(' ')[1];
 
     try {
         // 2. validate token

@@ -17,6 +17,17 @@ describe('Justification', () => {
 });
 
 describe('POST /api/justify (E2E)', () => {
+  const email = mockDatabase[0];
+
+  const payload = {
+    id: uuid.v4(),
+    login: email,
+  };
+  const secret = process.env.JWT_SECRET || 'secret'
+
+  const token = jwt.sign(payload, secret, {
+      expiresIn: '10h'
+  })
 
   it("should block user's access due to unauthorized", async () => {
     const text = `Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le temps de me dire: «Je m'endors.»`;
@@ -28,22 +39,20 @@ describe('POST /api/justify (E2E)', () => {
 
     expect(response.status).toBe(401);
   });
+
+  it('should return 400 for bad text content', async () => {
+    const res = await request(app)
+        .post('/api/justify')
+        .auth(token, { type: 'bearer' })
+        .send({});
+
+    expect(res.status).toBe(400);
+    expect(res.text).toBe('Bad text content');
+  });
   
   it("should return the justified text", async () => {
     const text = `Longtemps, je me suis couché de bonne heure. Parfois, à peine ma bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le temps de me dire: «Je m'endors.»`;
-
-    const email = mockDatabase[0];
-
-    const payload = {
-      id: uuid.v4(),
-      login: email,
-    };
-    const secret = process.env.JWT_SECRET || 'secret'
-
-    const token = jwt.sign(payload, secret, {
-        expiresIn: '10h'
-    })
-
+    
     const response = await request(app)
       .post('/api/justify')
       .send({ 'text': text })
