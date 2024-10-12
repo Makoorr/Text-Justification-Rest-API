@@ -2,10 +2,13 @@
 
 Ce projet permet de justifier des textes envoyés à travers un API endpoint
 
-## Tech Stack
+## Technology Used
 
 - Express
 - Typescript
+- JsonWebToken
+- Jest
+- Supertest
 
 ## Features
 
@@ -30,17 +33,25 @@ Ce projet permet de justifier des textes envoyés à travers un API endpoint
    cd tictac
    ```
 
-2. Installer les dépendances
+2. Installer les dépendances:
     ```bash
     npm install
     ```
 
-3. Run the development server:
+3. Executer le serveur de development:
     ```bash
     npm run dev
     ```
 
+## Pour tester le projet
+
+Executer la commande suivante:
+```
+npm run test
+```
+
 ## Pour lancer le projet
+
 Executer la commande suivante:
 ```
 npm start

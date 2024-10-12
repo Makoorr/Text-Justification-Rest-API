@@ -3,10 +3,6 @@ import { connectedUsers } from "../database/users";
 import * as jwt from "jsonwebtoken";
 import { RequestWithUser } from "../interfaces/auth";
 
-const countWords = (text: string): number => {
-    return text.split(/\s+/).filter(word => word.length > 0).length;
-};
-
 export const rateLimitMiddleware = (req: RequestWithUser, res: Response, next: NextFunction) => {
     const authorization = req.headers['authorization'];
     try {
@@ -35,7 +31,7 @@ export const rateLimitMiddleware = (req: RequestWithUser, res: Response, next: N
         }
 
         const text = req.body.text || '';
-        const wordCount = countWords(text);
+        const wordCount = text.length;
 
         if (connectedUsers[userEmail].wordCount + wordCount > 80000) {
             return res.status(402).json({ error: 'Payment Required' });
