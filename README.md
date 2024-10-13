@@ -10,6 +10,10 @@ Ce projet permet de justifier des textes envoyés à travers un API endpoint
 - Jest
 - Supertest
 
+## Deployment
+
+Le site est déployé sur https://tictac-orpin.vercel.app/ (Vercel)
+
 ## Features
 
 - **Justification de texte**: Justifie un texte donné à 80 caractères par ligne sans utiliser de bibliothèques externes
